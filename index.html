@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>TexEn</title>
+    <!-- Source word probability data -->
+    <script defer src="data/word_probability.js"></script>
+    <!-- Source NLP functions -->
+    <script defer src="scripts/nlp.js"></script>
+    <!-- Source text entropy calculator -->
+    <script defer src="scripts/texen_calculator.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+                                   user-scale=no, minimum-scale=1,
+                                   maximum-scale=1">
+    <!-- link to main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles/base.css">
+    <style>
+      #calculate_entropy {
+        font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
+        margin: auto auto;
+      }
+
+      #enden_score {
+        font-weight: bold;
+        font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
+        font-size:18px;
+        text-align:center;
+        color: #FF1493;
+      }
+
+      #enable_js {
+        font-weight: bold;
+        font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
+        font-size:18px;
+        text-align:center;
+        color: #FF1493;
+      }
+
+      #essay_box {
+        font-family: 'Courier', monospace;
+        font-size:15px;
+        margin: auto auto;
+        text-align: center;
+        width:90%;
+      }
+
+      #prompt {
+        background-color: inherit;
+        border-style: dashed;
+        border-color: black;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        height: 54vmin;
+        outline: none;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        resize: vertical;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        text-align: justify;
+        word-break: keep-all;
+        width: 90%;
+      }
+
+      #misc_score_metrics {
+        font-weight: bold;
+        font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
+        font-size:15px;
+        text-align:center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="blurb">
+      	<h1>TexEn</h1>
+        <p>A simple browser-based <b>tex</b>t <b>en</b>tropy calculator.</p>
+      </div>
+      <div id="calculate_entropy">
+        <noscript>
+          <p id="enable_js">
+            Please <u>enable Javascript</u> to use the scoring feature.
+          </p>
+        </noscript>
+        <div id="enden_score">
+          <!-- place holder -->
+          <br>
+        </div>
+        <br>
+        <div id="essay_box">
+            <textarea id="prompt"
+              wrap="soft"
+              placeholder="Enter text here ..."></textarea>
+        </div>
+        <br>
+        <div id="misc_score_metrics">
+          <br>
+          <!-- place holder -->
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </body>
+</html>
