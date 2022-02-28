@@ -18,29 +18,29 @@
       #calculate_entropy {
         font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
         margin: auto auto;
+        text-align: center;
       }
 
-      #enden_score {
+      #text_info_metrics {
+        color: #FF1493;
+        display: inline-block;
         font-weight: bold;
         font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
         font-size:18px;
-        text-align:center;
-        color: #FF1493;
+        text-align: center;
       }
 
       #enable_js {
+        color: #FF1493;
         font-weight: bold;
         font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
         font-size:18px;
-        text-align:center;
-        color: #FF1493;
       }
 
       #essay_box {
         font-family: 'Courier', monospace;
         font-size:15px;
         margin: auto auto;
-        text-align: center;
         width:90%;
       }
 
@@ -53,17 +53,17 @@
         font-size: inherit;
         height: 54vmin;
         outline: none;
+        overflow-y: scroll;
+        overflow-x: hidden;
         padding-bottom: 5px;
         padding-top: 5px;
         resize: vertical;
-        overflow-y: scroll;
-        overflow-x: hidden;
         text-align: justify;
         word-break: keep-all;
         width: 90%;
       }
 
-      #misc_score_metrics {
+      #misc_metrics {
         font-weight: bold;
         font-family: 'Helvetica', 'Arial', 'Sans-Serif', monospace;
         font-size:15px;
@@ -84,9 +84,25 @@
             Please <u>enable Javascript</u> to use the scoring feature.
           </p>
         </noscript>
-        <div id="enden_score">
+        <div id="text_info_metrics">
           <!-- place holder -->
-          <br>
+          <table>
+            <tr>
+              <th>Words</th>
+              <th>Entropy</th>
+              <th>Information</th>
+              <th>Entropy Rate</th>
+              <th>Information Rate</th>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0.00000000</td>
+              <td>0.00000000</td>
+              <td>0.00000000</td>
+              <td>0.00000000</td>
+            </tr>
+          </table>
+          <br><br>
         </div>
         <br>
         <div id="essay_box">
@@ -95,7 +111,7 @@
               placeholder="Enter text here ..."></textarea>
         </div>
         <br>
-        <div id="misc_score_metrics">
+        <div id="misc_metrics">
           <br>
           <!-- place holder -->
         </div>

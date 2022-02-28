@@ -13,15 +13,51 @@ function tokenize(text) {
   return cleaned_text.split(' ').filter(Boolean);
 }
 
-function entropy(p) {
-  // calculate shannon entropy for a single event
-  return -p * Math.log2(p);
+function information(p) {
+  // calculate information content of single event
+  return - Math.log2(p)
 }
 
-function calculate_text_entropy(words) {
-  // calculate entropy for each word (from: data/word_probability.js)
-  let scores = words.map(w => entropy(WORD_PROBABILITY[w]) || 0);
+function entropy(p) {
+  // calculate shannon entropy (i.e. expected info E[I]) for a single event
+  return p * information(p);
+}
 
-  // now sum individual word entropies
-  return scores.reduce((total, n) => total + n, 0);
+function information_metrics(p) {
+  // first get information content
+  let info = information(p);
+
+  // then return array of info content, and entropy
+  return [info, p * info];
+}
+
+function calculate_text_information(words) {
+  // calculate information metrics (from: data/word_probability.js)
+  let metrics = words.map(
+    function (w) {
+      // check if word probability exists
+      let p = WORD_PROBABILITY[w] || 1;
+      // get information
+      return information_metrics(p);
+    }
+  );
+
+  // now totals for word metrics
+  let totals = metrics.reduce(
+    // create function to apply to each word's information metrics
+    function (previousVal, currentVal) {
+      // iterate over currentVal and update previousVal
+      currentVal.forEach((element, index) => previousVal[index] += element);
+      // now give back newly updated previous value (i.e. the running total)
+      return previousVal
+    },
+    // initial value for when no words are present
+    [0, 0]
+  );
+
+  // now convert totals to dictionary
+  return {
+    'information': totals[0],
+    'entropy': totals[1]
+  };
 }

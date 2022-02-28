@@ -10,31 +10,49 @@ const VALID_KEYS = [
 
 // funcs
 function check_words(e) {
-    // get tokenized words
-    var clean_words = tokenize(this.value);
+  // get tokenized words
+  let clean_words = tokenize(this.value);
 
-    // get word count
-    const word_count = clean_words.length;
+  // get word count
+  const word_count = clean_words.length;
 
-    // pass text to entropy text calculator (from: scripts/nlp.js)
-    let score = calculate_text_entropy(clean_words);
+  // pass text to information metrics calculator (from: scripts/nlp.js)
+  let metrics = calculate_text_information(clean_words);
 
-    // get output elements
-    const enden_score_div = document.getElementById('enden_score');
-    const misc_score_div = document.getElementById('misc_score_metrics');
+  // get output elements
+  const text_info_metrics_div = document.getElementById('text_info_metrics');
 
-    // setup total words and total score template
-    var total_words_template = word_count;
-    var total_score_template = score.toFixed(8);
+  // setup totals
+  let total_words = word_count;
+  let total_information = metrics['information'].toFixed(8);
+  let total_entropy = metrics['entropy'].toFixed(8);
+  let entropy_rate = (word_count != 0
+      ? total_entropy/clean_words.length
+      : 0).toFixed(8);
+  let information_rate = (word_count != 0
+      ? total_information/clean_words.length
+      : 0).toFixed(8);
 
-    // update score
-    enden_score_div.innerHTML =
-      'Entropy-Density: ' +
-      (word_count != 0 ? score/clean_words.length : 0).toFixed(8);
-    misc_score_div.innerHTML =
-      'Total Words: ' + total_words_template +
-      '  |  ' +
-      'Total Entropy: ' + total_score_template;
+  // update information metrics
+  text_info_metrics_div.innerHTML = `
+    <table>
+      <tr>
+        <th>Words</th>
+        <th>Entropy</th>
+        <th>Information</th>
+        <th>Entropy Rate</th>
+        <th>Information Rate</th>
+      </tr>
+      <tr>
+        <td>${total_words}</td>
+        <td>${total_entropy}</td>
+        <td>${total_information}</td>
+        <td>${entropy_rate}</td>
+        <td>${information_rate}</td>
+      </tr>
+    </table>
+    <br><br>
+  `;
 }
 
 /*
