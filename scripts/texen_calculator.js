@@ -29,7 +29,7 @@ function check_words(e) {
 
     // update score
     enden_score_div.innerHTML =
-      'Entropy-Density Score: ' +
+      'Entropy-Density: ' +
       (word_count != 0 ? score/clean_words.length : 0).toFixed(8);
     misc_score_div.innerHTML =
       'Total Words: ' + total_words_template +
