@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>TexEn | Configure</title>
+    <!-- Source config -->
+    <script src="scripts/config.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+                                   user-scale=no, minimum-scale=1,
+                                   maximum-scale=1">
+    <!-- link to main stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles/base.css">
+    <script>
+      // setup config values
+      function setup_config() {
+        // set input values
+        document.getElementById('irb').value = TEXEN_CONFIG['irb'];
+      }
+
+      // for updating TexEn config values
+      function update_config() {
+        // get html form input values
+        TEXEN_CONFIG = {
+          'irb': Number(document.getElementById('irb').value) || 0
+        };
+        // update localstorage
+        localStorage.setItem('texen_config', JSON.stringify(TEXEN_CONFIG));
+      };
+    </script>
+    <style>
+      #config_form {
+        color: #FF1493;
+        font-family: 'Courier', monospace;
+        font-size:16px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="setup_config()">
+    <nav>
+     <ul>
+       <li><a href="index.html">TexEn</a></li>
+       <li><a href="configure.html">Configure</a></li>
+     </ul>
+    <div class="container">
+      <div class="blurb">
+      	<h1>Configure</h1>
+        <p>
+          This is the configuration page for <i>TexEn</i>.
+          Set the below variables to their desired values and press the
+          <b>update</b> button for the changes to take efffect.
+        </p>
+      </div>
+      <div id="config_form">
+        <label for="ir_baseline">
+          <b>Information Rate Baseline</b>:
+        </label>
+        <input type="text" name="ir_baseline" id="irb" required>
+        <br><br>
+        <button onclick="update_config()">update</button>
+      </div>
+    </div>
+  </body>
+</html>

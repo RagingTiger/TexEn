@@ -31,7 +31,7 @@ function check_words(e) {
       : 0).toFixed(8);
   let information_rate = (word_count != 0
       ? total_information/clean_words.length
-      : 0).toFixed(8);
+      : 0).toFixed(8) - TEXEN_CONFIG['irb'];
 
   // update information metrics
   text_info_metrics_div.innerHTML = `
