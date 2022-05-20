@@ -183,3 +183,33 @@ footer.p {
 caption {
   caption-side: bottom;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #333;
+    color: #b1a79c;
+  }
+
+  a {
+      text-decoration: none;
+      color: #b1a79c;
+  }
+
+  a:hover {
+      text-decoration: underline;
+      color: #FF1493;
+  }
+
+  a.colorlink {
+      text-decoration: none;
+      color: #FF1493;
+  }
+
+  #essay_box {
+    color: #DDD;
+    border-color: #b1a79c;
+  }
+
+  #prompt {
+    border-color: #b1a79c;
+  }
